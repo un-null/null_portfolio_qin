@@ -9,6 +9,9 @@ module.exports = {
       lg: '1200px',
       xl: '1400px',
     },
+    gridTemplateRows: {
+      layout: 'auto 1fr auto',
+    },
   },
   plugins: [],
 }
