@@ -15,7 +15,7 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   return (
     <Layout label="Home">
-      <section className="h-60 bg-pink-500 mb-8">
+      <section className="h-60 bg-[#E64980] mb-8">
         <div className="w-full h-full max-w-screen-lg mx-auto flex justify-between items-center px-4 text-white">
           <div className="font-bold">
             <h1 className="text-4xl">null</h1>
