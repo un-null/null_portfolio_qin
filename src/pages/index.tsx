@@ -15,6 +15,7 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   return (
     <Layout label="Home">
+      {/* Top Section */}
       <section className="h-60 bg-[#E64980] mb-8">
         <div className="w-full h-full max-w-screen-lg mx-auto flex justify-between items-center px-4 text-white">
           <div className="font-bold">
@@ -29,6 +30,8 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Blog Section */}
       <section className="max-w-screen-lg h-auto mx-auto my-8 px-4 space-y-4">
         <Title title="Blog" />
         <Post />
@@ -42,6 +45,8 @@ const Home: NextPage = () => {
           </Button>
         </div>
       </section>
+
+      {/* Portfolio Section */}
       <section className="max-w-screen-lg h-auto mx-auto my-8 px-4">
         <Title title="Portfolio" />
         <Works />
@@ -51,7 +56,11 @@ const Home: NextPage = () => {
           </Button>
         </div>
       </section>
+
+      {/* Twitter & GitHub Section */}
       <div className="w-full max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2">
+        {/* GitHub Section */}
+
         <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4 space-y-4">
           <Title title="GitHub" />
           <Repositories />
@@ -61,6 +70,8 @@ const Home: NextPage = () => {
             </Button>
           </div>
         </section>
+
+        {/* Twitter Section */}
         <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4 space-y-4">
           <Title title="Twitter" />
           <Tweets />
