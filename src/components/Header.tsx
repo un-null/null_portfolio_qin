@@ -9,18 +9,20 @@ export const Header: FC = () => {
   const media = useMediaQuery('(min-width: 768px)', false)
   const [opened, setOpened] = useState(false)
   return (
-    <header className="w-full max-w-screen-lg h-12 mx-auto flex justify-between items-center px-4 font-semibold">
+    <header className="w-full max-w-screen-lg h-12 mx-auto flex justify-between items-center px-4 font-bold">
       {!media && (
         <Burger opened={opened} onClick={() => setOpened((o) => !o)} />
       )}
-      <h1 className="text-xl">null</h1>
+      <Link href="/">
+        <a className="text-2xl">null</a>
+      </Link>
       <nav className="flex gap-4">
         {media && (
-          <ul className="flex space-x-4">
-            <Link href="/">
+          <ul className="flex space-x-4 text-xl">
+            <Link href="/about">
               <a>About</a>
             </Link>
-            <Link href="/">
+            <Link href="/blog">
               <a>Blog</a>
             </Link>
             <Link href="/">
