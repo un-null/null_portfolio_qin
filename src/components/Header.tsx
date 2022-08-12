@@ -28,7 +28,7 @@ export const Header: FC = () => {
             <Link href="/portfolio">
               <a>Portfolio</a>
             </Link>
-            <Link href="/">
+            <Link href="/contact">
               <a>Contact</a>
             </Link>
           </ul>
