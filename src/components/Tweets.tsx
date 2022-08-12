@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Buttons } from './Buttons'
 import { Tweet } from './Tweet'
 
 export const Tweets: FC = () => {
@@ -7,6 +8,8 @@ export const Tweets: FC = () => {
       <Tweet />
       <Tweet />
       <Tweet />
+
+      <Buttons label="View on Twitter" />
     </div>
   )
 }

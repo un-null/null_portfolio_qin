@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Buttons } from './Buttons'
 import { Repository } from './Repository'
 
 export const Repositories: FC = () => {
@@ -9,6 +10,8 @@ export const Repositories: FC = () => {
       <Repository />
       <Repository />
       <Repository />
+
+      <Buttons label="View on GitHub" />
     </div>
   )
 }
