@@ -25,7 +25,7 @@ export const Header: FC = () => {
             <Link href="/blog">
               <a>Blog</a>
             </Link>
-            <Link href="/">
+            <Link href="/portfolio">
               <a>Portfolio</a>
             </Link>
             <Link href="/">
