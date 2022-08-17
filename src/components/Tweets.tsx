@@ -1,15 +1,20 @@
 import { FC } from 'react'
 import { Buttons } from './Buttons'
+import { Title } from './Title'
 import { Tweet } from './Tweet'
 
 export const Tweets: FC = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center space-y-2">
-      <Tweet />
-      <Tweet />
-      <Tweet />
+    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4 space-y-4">
+      <Title title="Twitter" />
 
-      <Buttons label="View on Twitter" />
-    </div>
+      <div className="w-full flex flex-col justify-center items-center space-y-2">
+        <Tweet />
+        <Tweet />
+        <Tweet />
+
+        <Buttons label="View on Twitter" />
+      </div>
+    </section>
   )
 }
