@@ -1,6 +1,11 @@
-import { ActionIcon, Burger, Drawer } from '@mantine/core'
+import {
+  ActionIcon,
+  Burger,
+  Drawer,
+  useMantineColorScheme,
+} from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-import { IconMoon, IconX } from '@tabler/icons'
+import { IconMoon, IconSun, IconX } from '@tabler/icons'
 import Link from 'next/link'
 import { useState } from 'react'
 import { FC } from 'react'
@@ -8,6 +13,9 @@ import { FC } from 'react'
 export const Header: FC = () => {
   const media = useMediaQuery('(min-width: 768px)', false)
   const [opened, setOpened] = useState(false)
+
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+  const dark = colorScheme === 'dark'
   return (
     <header className="w-full max-w-screen-lg h-12 mx-auto flex justify-between items-center px-4 font-bold">
       {/* Burger && Navigation */}
@@ -85,8 +93,12 @@ export const Header: FC = () => {
           </ul>
         )}
 
-        <ActionIcon variant="outline">
-          <IconMoon size={18} />
+        <ActionIcon
+          variant="outline"
+          color={dark ? 'yellow' : 'blue'}
+          onClick={() => toggleColorScheme()}
+        >
+          {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
         </ActionIcon>
       </nav>
     </header>
