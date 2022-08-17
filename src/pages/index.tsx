@@ -8,7 +8,7 @@ import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
-    <Layout label="Home">
+    <Layout label="Home" description="This page is nulls portfolio homepage">
       {/* Top Section */}
       <Top />
 

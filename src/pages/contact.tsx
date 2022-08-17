@@ -6,7 +6,7 @@ import { NextPage } from 'next'
 
 const Contact: NextPage = () => {
   return (
-    <Layout label="Contact">
+    <Layout label="Contact" description="This page is contact page">
       <div className="w-full max-w-screen-lg h-full mx-auto my-10">
         <Title title="Contact" />
         <form className="space-y-8 my-8">
