@@ -1,4 +1,4 @@
-import { ActionIcon, Burger, CloseButton, Drawer } from '@mantine/core'
+import { ActionIcon, Burger, Drawer } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconMoon, IconX } from '@tabler/icons'
 import Link from 'next/link'
@@ -35,18 +35,26 @@ export const Header: FC = () => {
             </div>
 
             <ul className="w-full h-full flex flex-col space-y-4 text-3xl font-semibold">
-              <Link href="/about">
-                <a>About</a>
-              </Link>
-              <Link href="/blog">
-                <a>Blog</a>
-              </Link>
-              <Link href="/portfolio">
-                <a>Portfolio</a>
-              </Link>
-              <Link href="/contact">
-                <a>Contact</a>
-              </Link>
+              <li>
+                <Link href="/about">
+                  <a>About</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog">
+                  <a>Blog</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/portfolio">
+                  <a>Portfolio</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <a>Contact</a>
+                </Link>
+              </li>
             </ul>
           </Drawer>
         </nav>

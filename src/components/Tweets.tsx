@@ -1,5 +1,5 @@
+import { Button } from '@mantine/core'
 import { FC } from 'react'
-import { Buttons } from './Buttons'
 import { Title } from './Title'
 import { Tweet } from './Tweet'
 
@@ -13,7 +13,11 @@ export const Tweets: FC = () => {
         <Tweet />
         <Tweet />
 
-        <Buttons label="View on Twitter" />
+        <div className="w-full h-auto grid place-items-center">
+          <Button color="dark" size="md" radius="xl" className="my-4">
+            View on Twitter
+          </Button>
+        </div>
       </div>
     </section>
   )

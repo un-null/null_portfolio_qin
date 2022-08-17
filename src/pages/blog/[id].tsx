@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 
 const PostId: NextPage = () => {
   return (
-    <Layout label="Post">
+    <Layout label="Post" description="this is the detailed blog page of null">
       <div className="w-full max-w-screen-lg mx-auto mt-8">
         <Title title="This is a header" />
         <time className="block my-2 font-semibold text-gray-400">

@@ -1,5 +1,5 @@
+import { Button } from '@mantine/core'
 import { FC } from 'react'
-import { Buttons } from './Buttons'
 import { Repository } from './Repository'
 import { Title } from './Title'
 
@@ -15,7 +15,11 @@ export const Repositories: FC = () => {
         <Repository />
         <Repository />
 
-        <Buttons label="View on GitHub" />
+        <div className="w-full h-auto grid place-items-center">
+          <Button color="dark" size="md" radius="xl" className="my-4">
+            View on GitHub
+          </Button>
+        </div>
       </div>
     </section>
   )

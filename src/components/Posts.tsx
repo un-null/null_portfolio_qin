@@ -1,5 +1,5 @@
+import { Button } from '@mantine/core'
 import { FC } from 'react'
-import { Buttons } from './Buttons'
 import { Post } from './Post'
 import { Title } from './Title'
 
@@ -13,7 +13,11 @@ export const Posts: FC = () => {
       <Post />
       <Post />
 
-      <Buttons label="View All" />
+      <div className="w-full h-auto grid place-items-center">
+        <Button color="dark" size="md" radius="xl" className="my-4">
+          View All
+        </Button>
+      </div>
     </section>
   )
 }

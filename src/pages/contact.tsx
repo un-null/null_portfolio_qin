@@ -1,5 +1,4 @@
-import { Textarea, TextInput } from '@mantine/core'
-import { Buttons } from 'components/Buttons'
+import { Button, Textarea, TextInput } from '@mantine/core'
 import { Layout } from 'components/Layout'
 import { Title } from 'components/Title'
 import { NextPage } from 'next'
@@ -32,7 +31,11 @@ const Contact: NextPage = () => {
             }}
           />
         </form>
-        <Buttons label="Send message" />
+        <div className="w-full h-auto grid place-items-center">
+          <Button color="dark" size="md" radius="xl" className="my-4">
+            Send message
+          </Button>
+        </div>
       </div>
     </Layout>
   )
