@@ -1,20 +1,27 @@
 import { Indicator, Progress } from '@mantine/core'
 import { IconGitFork, IconStar } from '@tabler/icons'
 import { FC } from 'react'
+import { GitHub } from 'types'
 
-export const Repository: FC = () => {
+export const Repository: FC<GitHub> = ({
+  id,
+  name,
+  description,
+  star,
+  fork,
+}) => {
   return (
     <div className="w-full h-36 flex flex-col justify-start space-y-2">
-      <h1 className="text-2xl font-semibold">null/qin-portfolio</h1>
-      <p className="font-xl">Qin Portfolio</p>
+      <h1 className="text-2xl font-semibold">{name}</h1>
+      <p className="font-xl">{description}</p>
       <div className="flex justify-start text-gray-500">
         <div className="flex justify-center items-center space-x-1 mr-4">
           <IconStar size={18} stroke={2.5} />
-          <p>117</p>
+          <p>{star}</p>
         </div>
         <div className="flex justify-center items-center space-x-1">
           <IconGitFork size={18} stroke={2.5} />
-          <p>4</p>
+          <p>{fork}</p>
         </div>
       </div>
       <Progress
