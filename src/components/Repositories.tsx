@@ -52,7 +52,6 @@ export const Repositories: FC = () => {
           return (
             <Repository
               key={repositry.id}
-              id={repositry.id}
               name={repositry.name}
               description={repositry.description}
               star={repositry.star}

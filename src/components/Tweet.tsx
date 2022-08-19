@@ -3,8 +3,7 @@ import { IconBrandTwitter, IconUser } from '@tabler/icons'
 import { FC } from 'react'
 import { Twitter } from 'types'
 
-export const Tweet: FC<Twitter> = ({
-  id,
+export const Tweet: FC<Omit<Twitter, 'id'>> = ({
   username,
   user_id,
   created_at,

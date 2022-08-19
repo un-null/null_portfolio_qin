@@ -39,7 +39,6 @@ export const Tweets: FC = () => {
           return (
             <Tweet
               key={tweet.id}
-              id={tweet.id}
               username={tweet.username}
               user_id={tweet.user_id}
               created_at={tweet.created_at}

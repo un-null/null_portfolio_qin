@@ -3,8 +3,7 @@ import { IconGitFork, IconStar } from '@tabler/icons'
 import { FC } from 'react'
 import { GitHub } from 'types'
 
-export const Repository: FC<GitHub> = ({
-  id,
+export const Repository: FC<Omit<GitHub, 'id'>> = ({
   name,
   description,
   star,
