@@ -34,7 +34,7 @@ export const Tweets: FC = () => {
     <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4">
       <Title title="Twitter" />
 
-      <ul className="w-full flex flex-col justify-center items-center space-y-2">
+      <ul className="w-full flex flex-col justify-center items-center space-y-6 mt-6">
         {tweets.map((tweet) => {
           return (
             <Tweet

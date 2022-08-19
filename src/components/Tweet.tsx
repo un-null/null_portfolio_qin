@@ -17,7 +17,7 @@ export const Tweet: FC<Omit<Twitter, 'id'>> = ({
             {avatar}
           </Avatar>
         </div>
-        <div className="w-11/12 h-full p-4 mx-4">
+        <div className="w-11/12 h-auto p-4 mx-4">
           <div className="font-semibold text-xl flex items-center">
             <h2>{username}</h2>
             <span className="block ml-2 text-gray-500 text-sm">

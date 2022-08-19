@@ -47,7 +47,7 @@ export const Repositories: FC = () => {
     <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto px-4">
       <Title title="GitHub" />
 
-      <ul className="w-full flex flex-col justify-center items-center space-y-4">
+      <ul className="w-full flex flex-col justify-center items-center space-y-6 mt-6">
         {repositries.map((repositry) => {
           return (
             <Repository
