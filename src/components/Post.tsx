@@ -4,7 +4,7 @@ import { Blog } from 'types'
 
 export const Post: FC<Blog> = ({ id, title, content, created_at }) => {
   return (
-    <div className="max-w-screen-md my-8">
+    <li className="max-w-screen-md">
       <Link href={`/blog/${id}`} passHref>
         <div className="cursor-pointer">
           <h1 className="text-2xl font-semibold my-2">{title}</h1>
@@ -12,6 +12,6 @@ export const Post: FC<Blog> = ({ id, title, content, created_at }) => {
           <time>{created_at}</time>
         </div>
       </Link>
-    </div>
+    </li>
   )
 }

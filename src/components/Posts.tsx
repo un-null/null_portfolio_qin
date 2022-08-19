@@ -44,20 +44,22 @@ const PostContent: Blog[] = [
 
 export const Posts: FC = () => {
   return (
-    <section className="max-w-screen-lg h-auto mx-auto my-8 px-4">
+    <section className="max-w-screen-lg h-fit mx-auto mt-20 px-4">
       <Title title="Blog" />
 
-      {PostContent.map((post) => {
-        return (
-          <Post
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            content={post.content}
-            created_at={post.created_at}
-          />
-        )
-      })}
+      <ul className="my-6">
+        {PostContent.map((post) => {
+          return (
+            <Post
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              content={post.content}
+              created_at={post.created_at}
+            />
+          )
+        })}
+      </ul>
 
       <Button
         color="dark"

@@ -44,10 +44,10 @@ const repositries: GitHub[] = [
 
 export const Repositories: FC = () => {
   return (
-    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4 space-y-4">
+    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto px-4">
       <Title title="GitHub" />
 
-      <div className="w-full flex flex-col justify-center items-center space-y-4">
+      <ul className="w-full flex flex-col justify-center items-center space-y-4">
         {repositries.map((repositry) => {
           return (
             <Repository
@@ -60,18 +60,18 @@ export const Repositories: FC = () => {
             />
           )
         })}
+      </ul>
 
-        <Button
-          color="dark"
-          size="md"
-          radius="xl"
-          className="block"
-          mt={40}
-          mx="auto"
-        >
-          View on GitHub
-        </Button>
-      </div>
+      <Button
+        color="dark"
+        size="md"
+        radius="xl"
+        className="block"
+        mt={40}
+        mx="auto"
+      >
+        View on GitHub
+      </Button>
     </section>
   )
 }

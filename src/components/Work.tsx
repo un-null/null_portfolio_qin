@@ -4,7 +4,7 @@ import { Portfolio } from 'types'
 
 export const Work: FC<Portfolio> = ({ id, title, content, created_at }) => {
   return (
-    <div className="w-80 h-96 rounded-sm">
+    <li className="w-80 h-96 rounded-sm">
       <div className="w-full h-44 grid place-items-center bg-slate-100">
         <IconPhoto size={24} />
       </div>
@@ -15,6 +15,6 @@ export const Work: FC<Portfolio> = ({ id, title, content, created_at }) => {
           {created_at}
         </time>
       </div>
-    </div>
+    </li>
   )
 }

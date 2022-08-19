@@ -11,7 +11,7 @@ export const Repository: FC<GitHub> = ({
   fork,
 }) => {
   return (
-    <div className="w-full h-36 flex flex-col justify-start space-y-2">
+    <li className="w-full h-36 flex flex-col justify-start space-y-2">
       <h1 className="text-2xl font-semibold">{name}</h1>
       <p className="font-xl">{description}</p>
       <div className="flex justify-start text-gray-500">
@@ -64,6 +64,6 @@ export const Repository: FC<GitHub> = ({
           </p>
         </Indicator>
       </div>
-    </div>
+    </li>
   )
 }

@@ -31,10 +31,10 @@ const tweets: Twitter[] = [
 
 export const Tweets: FC = () => {
   return (
-    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4 space-y-4">
+    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4">
       <Title title="Twitter" />
 
-      <div className="w-full flex flex-col justify-center items-center space-y-2">
+      <ul className="w-full flex flex-col justify-center items-center space-y-2">
         {tweets.map((tweet) => {
           return (
             <Tweet
@@ -47,18 +47,18 @@ export const Tweets: FC = () => {
             />
           )
         })}
+      </ul>
 
-        <Button
-          color="dark"
-          size="md"
-          radius="xl"
-          className="block"
-          mt={40}
-          mx="auto"
-        >
-          View on Twitter
-        </Button>
-      </div>
+      <Button
+        color="dark"
+        size="md"
+        radius="xl"
+        className="block"
+        mt={40}
+        mx="auto"
+      >
+        View on Twitter
+      </Button>
     </section>
   )
 }

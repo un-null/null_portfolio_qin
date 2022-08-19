@@ -6,7 +6,7 @@ type Props = {
 
 export const Title: FC<Props> = ({ title }) => {
   return (
-    <h1 className="w-full border-b border-gray-300 py-4 font-bold text-4xl">
+    <h1 className="w-full border-b border-gray-300 pb-5 font-bold text-4xl">
       {title}
     </h1>
   )

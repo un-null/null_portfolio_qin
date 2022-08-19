@@ -11,7 +11,7 @@ export const Tweet: FC<Twitter> = ({
   avatar,
 }) => {
   return (
-    <div className="w-full h-64 flex flex-col justify-start">
+    <li className="w-full h-64 flex flex-col justify-start">
       <div className="w-full h-full flex">
         <div className="w-1/12 h-full p-4">
           <Avatar color="blue" radius="xl" size="md">
@@ -30,6 +30,6 @@ export const Tweet: FC<Twitter> = ({
           </div>
         </div>
       </div>
-    </div>
+    </li>
   )
 }
