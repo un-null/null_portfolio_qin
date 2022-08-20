@@ -7,7 +7,7 @@ import { NextPage } from 'next'
 const Portfolio: NextPage = () => {
   return (
     <Layout label="Portfolio" description="This page is about null works">
-      <section className="max-w-screen-lg h-auto mx-auto my-8 px-4">
+      <section className="mx-auto my-8 h-auto max-w-screen-lg px-4">
         <Works />
       </section>
     </Layout>

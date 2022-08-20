@@ -8,10 +8,10 @@ const About: NextPage = () => {
       label="About"
       description="This page is the self-introduction page of null"
     >
-      <div className="w-full max-w-screen-lg h-full mx-auto my-10">
+      <div className="mx-auto my-10 h-full w-full max-w-screen-lg px-4">
         <Title title="About" />
-        <h1 className="text-3xl font-semibold my-4">null</h1>
-        <p>null is null</p>
+        <h1 className="my-4 text-2xl font-bold">null</h1>
+        <p className="text-base font-medium">null is null</p>
       </div>
     </Layout>
   )

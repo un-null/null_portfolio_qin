@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core'
+import Link from 'next/link'
 import { FC } from 'react'
 import { Blog } from 'types'
 import { Post } from './Post'
@@ -44,10 +45,10 @@ const PostContent: Blog[] = [
 
 export const Posts: FC = () => {
   return (
-    <section className="max-w-screen-lg h-fit mx-auto mt-20 px-4">
+    <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
       <Title title="Blog" />
 
-      <ul className="my-6">
+      <ul className="my-6 space-y-6">
         {PostContent.map((post) => {
           return (
             <Post
@@ -61,16 +62,16 @@ export const Posts: FC = () => {
         })}
       </ul>
 
-      <Button
-        color="dark"
-        size="md"
-        radius="xl"
-        className="block"
-        mt={40}
-        mx="auto"
-      >
-        View All
-      </Button>
+      <Link href="/blog" passHref>
+        <Button
+          component="a"
+          radius="xl"
+          className="block h-11 w-28 bg-[#25262B]"
+          mx="auto"
+        >
+          View All
+        </Button>
+      </Link>
     </section>
   )
 }

@@ -6,9 +6,9 @@ import { NextPage } from 'next'
 const Contact: NextPage = () => {
   return (
     <Layout label="Contact" description="This page is contact page">
-      <div className="max-w-screen-lg h-full mx-auto my-10">
+      <div className="mx-auto my-10 h-full max-w-screen-lg px-4">
         <Title title="Contact" />
-        <form className="w-[80%] max-w-lg space-y-8 my-8 mx-auto">
+        <form className="my-8 mx-auto w-[80%] max-w-lg space-y-8">
           <TextInput
             placeholder="your @email.com"
             label="Email"
@@ -31,7 +31,7 @@ const Contact: NextPage = () => {
             }}
           />
         </form>
-        <div className="w-full h-auto grid place-items-center">
+        <div className="grid h-auto w-full place-items-center">
           <Button color="dark" size="md" radius="xl" className="my-4">
             Send message
           </Button>

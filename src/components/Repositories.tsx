@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core'
+import Link from 'next/link'
 import { FC } from 'react'
 import { GitHub } from 'types'
 import { Repository } from './Repository'
@@ -44,10 +45,10 @@ const repositries: GitHub[] = [
 
 export const Repositories: FC = () => {
   return (
-    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto px-4">
+    <section className="mx-auto h-auto w-full px-4 pb-6 sm:w-[768px] md:w-full">
       <Title title="GitHub" />
 
-      <ul className="w-full flex flex-col justify-center items-center space-y-6 mt-6">
+      <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6">
         {repositries.map((repositry) => {
           return (
             <Repository
@@ -61,16 +62,16 @@ export const Repositories: FC = () => {
         })}
       </ul>
 
-      <Button
-        color="dark"
-        size="md"
-        radius="xl"
-        className="block"
-        mt={40}
-        mx="auto"
-      >
-        View on GitHub
-      </Button>
+      <Link href="https://github.com/un-null" passHref>
+        <Button
+          component="a"
+          radius="xl"
+          className="block h-11 w-40 bg-[#25262B]"
+          mx="auto"
+        >
+          View on GitHub
+        </Button>
+      </Link>
     </section>
   )
 }

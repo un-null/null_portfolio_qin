@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core'
+import Link from 'next/link'
 import { FC } from 'react'
 import { Portfolio } from 'types'
 import { Title } from './Title'
@@ -51,14 +52,13 @@ const portfolio: Portfolio[] = [
 
 export const Works: FC = () => {
   return (
-    <section className="max-w-screen-lg h-fit mx-auto mt-20 px-4">
+    <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
       <Title title="Portfolio" />
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-6 my-4">
+      <ul className="my-6 grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
         {portfolio.map((work) => {
           return (
             <Work
               key={work.id}
-              id={work.id}
               title={work.title}
               content={work.content}
               created_at={work.created_at}
@@ -67,11 +67,16 @@ export const Works: FC = () => {
         })}
       </ul>
 
-      <div className="w-full h-auto grid place-items-center">
-        <Button color="dark" size="md" radius="xl" className="my-4">
+      <Link href="/portfolio" passHref>
+        <Button
+          component="a"
+          radius="xl"
+          className="block h-11 w-28 bg-[#25262B]"
+          mx="auto"
+        >
           View All
         </Button>
-      </div>
+      </Link>
     </section>
   )
 }

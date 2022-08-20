@@ -16,12 +16,17 @@ export const Header: FC = () => {
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   const dark = colorScheme === 'dark'
+
   return (
-    <header className="w-full max-w-screen-lg h-12 mx-auto flex justify-between items-center px-4 font-bold">
+    <header className="mx-auto flex h-16 w-full max-w-screen-lg items-center justify-between px-4 font-bold">
       {/* Burger && Navigation */}
 
       {!media && (
-        <Burger opened={opened} onClick={() => setOpened((o) => !o)} />
+        <Burger
+          opened={opened}
+          onClick={() => setOpened((o) => !o)}
+          size={24}
+        />
       )}
       {opened && (
         <nav>
@@ -38,11 +43,11 @@ export const Header: FC = () => {
               <IconX
                 size={24}
                 stroke={4}
-                className="text-white hover:bg-transparent cursor-pointer mb-8"
+                className="mb-8 cursor-pointer text-white hover:bg-transparent"
               />
             </div>
 
-            <ul className="w-full h-full flex flex-col space-y-4 text-3xl font-semibold">
+            <ul className="flex h-full w-full flex-col space-y-4 text-3xl font-semibold">
               <li>
                 <Link href="/about">
                   <a>About</a>
@@ -95,7 +100,9 @@ export const Header: FC = () => {
 
         <ActionIcon
           variant="outline"
-          color={dark ? 'yellow' : 'blue'}
+          size={34}
+          radius="md"
+          color={dark ? 'yellow' : 'gray'}
           onClick={() => toggleColorScheme()}
         >
           {dark ? <IconSun size={18} /> : <IconMoon size={18} />}

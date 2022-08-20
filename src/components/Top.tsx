@@ -1,15 +1,24 @@
+import { useMediaQuery } from '@mantine/hooks'
 import { IconBrandFacebook, IconBrandTwitter, IconRss } from '@tabler/icons'
 
 export const Top = () => {
+  const media = useMediaQuery('(min-width: 768px)', false)
+
   return (
-    <section className="h-60 bg-[#E64980] mb-8">
-      <div className="w-full h-full max-w-screen-lg mx-auto flex justify-between items-center px-4 text-white">
-        <div className="font-bold">
-          <h1 className="text-4xl">null</h1>
+    <section className="mb-8 h-60 bg-[#E64980]">
+      <div
+        className={
+          media
+            ? 'mx-auto flex h-full w-full max-w-screen-lg items-center justify-between px-4 text-white'
+            : 'flex h-full w-full flex-col justify-center space-y-8 px-4 text-white'
+        }
+      >
+        <div className="space-y-0.5 font-bold">
+          <h1 className="text-3xl">null</h1>
           <p className="text-xl">nullのportfolioのためのページです</p>
         </div>
 
-        <div className="flex space-x-4">
+        <div className="flex space-x-2">
           <IconBrandTwitter />
           <IconBrandFacebook />
           <IconRss />

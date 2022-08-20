@@ -1,5 +1,6 @@
 import { Button } from '@mantine/core'
 import { IconUser } from '@tabler/icons'
+import Link from 'next/link'
 import { FC } from 'react'
 import { Twitter } from 'types'
 import { Title } from './Title'
@@ -31,10 +32,10 @@ const tweets: Twitter[] = [
 
 export const Tweets: FC = () => {
   return (
-    <section className="w-full sm:w-[768px] md:w-full h-auto mx-auto my-8 px-4">
+    <section className="mx-auto mt-10 h-auto w-full px-4 pb-6 sm:mt-0 sm:w-[768px] md:w-full">
       <Title title="Twitter" />
 
-      <ul className="w-full flex flex-col justify-center items-center space-y-6 mt-6">
+      <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6">
         {tweets.map((tweet) => {
           return (
             <Tweet
@@ -48,16 +49,16 @@ export const Tweets: FC = () => {
         })}
       </ul>
 
-      <Button
-        color="dark"
-        size="md"
-        radius="xl"
-        className="block"
-        mt={40}
-        mx="auto"
-      >
-        View on Twitter
-      </Button>
+      <Link href="/" passHref>
+        <Button
+          component="a"
+          radius="xl"
+          className="block h-11 w-40 bg-[#25262B]"
+          mx="auto"
+        >
+          View on Twitter
+        </Button>
+      </Link>
     </section>
   )
 }

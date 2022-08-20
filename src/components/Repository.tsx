@@ -10,17 +10,17 @@ export const Repository: FC<Omit<GitHub, 'id'>> = ({
   fork,
 }) => {
   return (
-    <li className="w-full h-36 flex flex-col justify-start space-y-2">
-      <h1 className="text-2xl font-semibold">{name}</h1>
-      <p className="font-xl">{description}</p>
-      <div className="flex justify-start text-gray-500">
-        <div className="flex justify-center items-center space-x-1 mr-4">
-          <IconStar size={18} stroke={2.5} />
-          <p>{star}</p>
+    <li className="flex min-h-0 w-full flex-col justify-start space-y-2 py-2">
+      <h2 className="text-lg font-bold">{name}</h2>
+      <p className="text-base font-medium">{description}</p>
+      <div className="mt-[2px] flex justify-start font-bold text-gray-500">
+        <div className="mr-4 flex items-center justify-center space-x-1">
+          <IconStar size={14} stroke={2.5} />
+          <p className="text-xs">{star}</p>
         </div>
-        <div className="flex justify-center items-center space-x-1">
-          <IconGitFork size={18} stroke={2.5} />
-          <p>{fork}</p>
+        <div className="flex items-center justify-center space-x-1">
+          <IconGitFork size={14} stroke={2.5} />
+          <p className="text-xs">{fork}</p>
         </div>
       </div>
       <Progress
@@ -31,14 +31,14 @@ export const Repository: FC<Omit<GitHub, 'id'>> = ({
         ]}
         size={7}
       />
-      <div className="flex px-2 space-x-4 font-semibold text-sm">
+      <div className="flex w-auto space-x-[6px] pl-2 text-xs font-bold">
         <Indicator
           position="middle-start"
           size={7}
           color={'#3178C6'}
           className="pl-2"
         >
-          <p>
+          <p className="pr-4">
             TypeScript <span className="text-gray-500">{50}%</span>
           </p>
         </Indicator>
@@ -58,7 +58,7 @@ export const Repository: FC<Omit<GitHub, 'id'>> = ({
           color={'#EDEDED'}
           className="pl-2"
         >
-          <p>
+          <p className="pl-4">
             Other <span className="text-gray-500">{2.5}%</span>
           </p>
         </Indicator>

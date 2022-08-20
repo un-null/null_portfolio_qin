@@ -10,21 +10,21 @@ export const Tweet: FC<Omit<Twitter, 'id'>> = ({
   avatar,
 }) => {
   return (
-    <li className="w-full h-64 flex flex-col justify-start">
-      <div className="w-full h-full flex">
-        <div className="w-1/12 h-full p-4">
+    <li className="h-64 w-full">
+      <div className="flex h-full w-full">
+        <div className="h-full w-1/6 pt-4">
           <Avatar color="blue" radius="xl" size="md">
             {avatar}
           </Avatar>
         </div>
-        <div className="w-11/12 h-auto p-4 mx-4">
-          <div className="font-semibold text-xl flex items-center">
+        <div className="h-auto w-full pt-4">
+          <div className="flex items-center gap-2 text-base font-bold">
             <h2>{username}</h2>
-            <span className="block ml-2 text-gray-500 text-sm">
+            <span className="block text-xs text-gray-500">
               @{user_id}・{created_at}
             </span>
           </div>
-          <div className="h-full grid place-content-center shadow-sm">
+          <div className="grid h-full place-content-center shadow-sm">
             <IconBrandTwitter size={36} stroke={1} className="text-blue-500" />
           </div>
         </div>
