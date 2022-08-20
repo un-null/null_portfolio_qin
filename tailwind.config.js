@@ -13,5 +13,5 @@ module.exports = {
       layout: 'auto 1fr auto',
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 }
