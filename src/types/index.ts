@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 export type Blog = {
   id: number
   title: string
-  content: string
+  body: string
   created_at: string
 }
 

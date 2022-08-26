@@ -1,6 +1,4 @@
-import { Button } from '@mantine/core'
 import { Layout } from 'components/Layout'
-import { Title } from 'components/Title'
 import { Works } from 'components/Works'
 import { NextPage } from 'next'
 

@@ -4,16 +4,23 @@ import { Repositories } from 'components/Repositories'
 import { Top } from 'components/Top'
 import { Tweets } from 'components/Tweets'
 import { Works } from 'components/Works'
-import type { NextPage } from 'next'
+import { client } from 'libs/client'
+import { MicroCMSListResponse } from 'microcms-js-sdk'
+import type { GetStaticProps, NextPage } from 'next'
+import { Blog } from 'types'
 
-const Home: NextPage = () => {
+type Props = {
+  blogData: MicroCMSListResponse<Blog>
+}
+
+const Home: NextPage<Props> = ({ blogData }) => {
   return (
     <Layout label="Home" description="This page is nulls portfolio homepage">
       {/* Top Section */}
       <Top />
 
       {/* Blog Section */}
-      <Posts />
+      <Posts data={blogData} />
 
       {/* Portfolio Section */}
       <Works />
@@ -31,3 +38,16 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+  const blogData = await client.getList<Blog>({
+    endpoint: 'blog',
+    queries: { limit: 5 },
+  })
+
+  return {
+    props: {
+      blogData,
+    },
+  }
+}

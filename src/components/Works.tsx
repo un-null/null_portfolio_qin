@@ -9,43 +9,37 @@ const portfolio: Portfolio[] = [
   {
     id: 1,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
   {
     id: 2,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
   {
     id: 3,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
   {
     id: 4,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
   {
     id: 5,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
   {
     id: 6,
     title: 'Null Portfolio',
-    content:
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
+    body: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit',
     created_at: '2021.10 - 2021.12 ',
   },
 ]
@@ -60,7 +54,7 @@ export const Works: FC = () => {
             <Work
               key={work.id}
               title={work.title}
-              content={work.content}
+              body={work.body}
               created_at={work.created_at}
             />
           )

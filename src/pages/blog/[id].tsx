@@ -1,22 +1,53 @@
+import { TypographyStylesProvider } from '@mantine/core'
 import { Layout } from 'components/Layout'
 import { Title } from 'components/Title'
-import { NextPage } from 'next'
+import { client } from 'libs/client'
+import { MicroCMSContentId, MicroCMSDate } from 'microcms-js-sdk'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { Blog } from 'types'
+import dayjs from 'dayjs'
 
-const PostId: NextPage = () => {
+type Props = Blog & MicroCMSContentId & MicroCMSDate
+
+const PostId: NextPage<Props> = (props) => {
   return (
     <Layout label="Post" description="this is the detailed blog page of null">
-      <div className="mx-auto mt-8 w-full max-w-screen-lg">
-        <Title title="This is a header" />
+      <div className="mx-auto mt-8 w-full max-w-screen-lg px-4">
+        <Title title={props.title} />
         <time className="my-2 block font-semibold text-gray-400">
-          2022.7.11
+          {dayjs(props.created_at).format('YYYY.MM.DD')}
         </time>
-        <p className=" text-lg">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit
-        </p>
+        <TypographyStylesProvider>
+          <article dangerouslySetInnerHTML={{ __html: props.body }} />
+        </TypographyStylesProvider>
       </div>
     </Layout>
   )
 }
 
 export default PostId
+
+export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
+  const data = await client.getList<Blog>({ endpoint: 'blog' })
+  const paths = data.contents.map((content) => `/blog/${content.id}`)
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
+  ctx
+) => {
+  if (!ctx.params) {
+    return { notFound: true }
+  }
+
+  const data = await client.getListDetail<Blog>({
+    endpoint: 'blog',
+    contentId: ctx.params.id,
+  })
+  return {
+    props: data,
+  }
+}

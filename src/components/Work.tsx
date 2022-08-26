@@ -4,7 +4,7 @@ import { Portfolio } from 'types'
 
 export const Work: FC<Omit<Portfolio, 'id'>> = ({
   title,
-  content,
+  body,
   created_at,
 }) => {
   return (
@@ -14,7 +14,7 @@ export const Work: FC<Omit<Portfolio, 'id'>> = ({
       </div>
       <div className="my-4 flex flex-col items-start justify-center space-y-2">
         <h1 className="text-2xl font-bold">{title}</h1>
-        <p className="text-base font-medium">{content}</p>
+        <p className="text-base font-medium">{body}</p>
         <time className="text-xs font-bold text-gray-500">{created_at}</time>
       </div>
     </li>
