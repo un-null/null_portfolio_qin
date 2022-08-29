@@ -20,7 +20,7 @@ const Home: NextPage<Props> = ({ blogData }) => {
       <Top />
 
       {/* Blog Section */}
-      <Posts data={blogData} />
+      <Posts {...blogData} />
 
       {/* Portfolio Section */}
       <Works />

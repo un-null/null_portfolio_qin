@@ -32,7 +32,10 @@ const Contact: NextPage = () => {
           />
         </form>
         <div className="grid h-auto w-full place-items-center">
-          <Button color="dark" size="md" radius="xl" className="my-4">
+          <Button
+            radius="xl"
+            className="block h-11 w-40 bg-[#25262B] hover:bg-[#0c0c13]"
+          >
             Send message
           </Button>
         </div>

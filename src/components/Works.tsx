@@ -65,7 +65,7 @@ export const Works: FC = () => {
         <Button
           component="a"
           radius="xl"
-          className="block h-11 w-28 bg-[#25262B]"
+          className="block h-11 w-28 bg-[#25262B] hover:bg-[#0c0c13]"
           mx="auto"
         >
           View All

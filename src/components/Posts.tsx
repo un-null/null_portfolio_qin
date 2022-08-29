@@ -8,13 +8,13 @@ import { Title } from './Title'
 
 type Props = MicroCMSListResponse<Blog>
 
-export const Posts: FC<{ data: Props }> = ({ data }) => {
+export const Posts: FC<Props> = (props) => {
   return (
     <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
       <Title title="Blog" />
 
       <ul className="my-6 space-y-6">
-        {data.contents.map((post) => {
+        {props.contents.map((post) => {
           return (
             <Post
               key={post.id}
@@ -31,7 +31,7 @@ export const Posts: FC<{ data: Props }> = ({ data }) => {
         <Button
           component="a"
           radius="xl"
-          className="block h-11 w-28 bg-[#25262B]"
+          className="block h-11 w-28 bg-[#25262B] hover:bg-[#0c0c13]"
           mx="auto"
         >
           View All

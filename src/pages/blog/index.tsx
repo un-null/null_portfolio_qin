@@ -11,7 +11,7 @@ const Blog: NextPage<Props> = (props) => {
   return (
     <Layout label="Blog" description="This page is about null blog page">
       <section className="mx-auto my-8 h-auto max-w-screen-lg space-y-4 px-4">
-        <Posts data={props} />
+        <Posts {...props} />
       </section>
     </Layout>
   )

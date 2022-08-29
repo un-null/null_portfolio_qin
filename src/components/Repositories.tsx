@@ -66,7 +66,7 @@ export const Repositories: FC = () => {
         <Button
           component="a"
           radius="xl"
-          className="block h-11 w-40 bg-[#25262B]"
+          className="block h-11 w-40 bg-[#25262B] hover:bg-[#0c0c13]"
           mx="auto"
         >
           View on GitHub
