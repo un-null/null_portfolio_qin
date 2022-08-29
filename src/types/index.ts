@@ -7,7 +7,15 @@ export type Blog = {
   created_at: string
 }
 
-export type Portfolio = Blog
+export type Portfolio = {
+  id: number
+  title: string
+  description: string
+  created_at: string
+  thumbnail: {
+    url: string
+  }
+}
 
 export type Twitter = {
   id: number
