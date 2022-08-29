@@ -1,5 +1,4 @@
-import { Layout } from 'components/Layout'
-import { Title } from 'components/Title'
+import { Layout, Title } from 'components'
 import { NextPage } from 'next'
 
 const About: NextPage = () => {

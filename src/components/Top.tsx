@@ -1,7 +1,8 @@
 import { useMediaQuery } from '@mantine/hooks'
 import { IconBrandFacebook, IconBrandTwitter, IconRss } from '@tabler/icons'
+import { FC } from 'react'
 
-export const Top = () => {
+export const Top: FC = () => {
   const media = useMediaQuery('(min-width: 768px)', false)
 
   return (

@@ -1,5 +1,4 @@
-import { Layout } from 'components/Layout'
-import { Posts } from 'components/Posts'
+import { Layout, Posts } from 'components'
 import { client } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import { GetStaticProps, NextPage } from 'next'

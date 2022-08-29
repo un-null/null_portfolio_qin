@@ -1,11 +1,10 @@
 import { TypographyStylesProvider } from '@mantine/core'
-import { Layout } from 'components/Layout'
-import { Title } from 'components/Title'
 import { client } from 'libs/client'
 import { MicroCMSContentId, MicroCMSDate } from 'microcms-js-sdk'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Blog } from 'types'
 import dayjs from 'dayjs'
+import { Layout, Title } from 'components'
 
 type Props = Blog & MicroCMSContentId & MicroCMSDate
 
