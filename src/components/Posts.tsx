@@ -1,6 +1,8 @@
 import { Button } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { Blog } from 'types'
 import { Post } from './Post'
@@ -9,12 +11,19 @@ import { Title } from './Title'
 type Props = MicroCMSListResponse<Blog>
 
 export const Posts: FC<Props> = (props) => {
+  const router = useRouter()
+  const home = router.asPath === '/'
+  const media = useMediaQuery('(min-width: 768px)', false)
+
+  const numberToShowPosts = home ? (media ? 5 : 4) : props.contents.length
+  const filteredPostData = props.contents.slice(0, numberToShowPosts)
+
   return (
     <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
       <Title title="Blog" />
 
       <ul className="my-6 space-y-6">
-        {props.contents.map((post) => {
+        {filteredPostData.map((post) => {
           return (
             <Post
               key={post.id}

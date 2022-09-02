@@ -1,6 +1,8 @@
 import { Button } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { Portfolio } from 'types'
 import { Title } from './Title'
@@ -9,11 +11,19 @@ import { Work } from './Work'
 type Props = MicroCMSListResponse<Portfolio>
 
 export const Works: FC<Props> = (props) => {
+  const router = useRouter()
+  const home = router.asPath === '/'
+
+  const media = useMediaQuery('(min-width: 768px)', false)
+
+  const numberToShowPortfoliio = home ? (media ? 6 : 3) : props.contents.length
+  const filteredPortfolioData = props.contents.slice(0, numberToShowPortfoliio)
+
   return (
     <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
       <Title title="Portfolio" />
       <ul className="my-6 grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {props.contents.map((work) => {
+        {filteredPortfolioData.map((work) => {
           return (
             <Work
               key={work.id}
