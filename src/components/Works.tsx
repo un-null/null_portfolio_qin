@@ -10,14 +10,14 @@ import { Work } from './Work'
 
 type Props = MicroCMSListResponse<Portfolio>
 
-export const Works: FC<Props> = (props) => {
+export const Works: FC<Props> = ({ contents }) => {
   const router = useRouter()
   const home = router.asPath === '/'
 
   const media = useMediaQuery('(min-width: 768px)', false)
 
-  const numberToShowPortfoliio = home ? (media ? 6 : 3) : props.contents.length
-  const filteredPortfolioData = props.contents.slice(0, numberToShowPortfoliio)
+  const numberToShowPortfoliio = home ? (media ? 6 : 3) : contents.length
+  const filteredPortfolioData = contents.slice(0, numberToShowPortfoliio)
 
   return (
     <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">

@@ -10,13 +10,13 @@ import { Title } from './Title'
 
 type Props = MicroCMSListResponse<Blog>
 
-export const Posts: FC<Props> = (props) => {
+export const Posts: FC<Props> = ({ contents }) => {
   const router = useRouter()
   const home = router.asPath === '/'
   const media = useMediaQuery('(min-width: 768px)', false)
 
-  const numberToShowPosts = home ? (media ? 5 : 4) : props.contents.length
-  const filteredPostData = props.contents.slice(0, numberToShowPosts)
+  const numberToShowPosts = home ? (media ? 5 : 4) : contents.length
+  const filteredPostData = contents.slice(0, numberToShowPosts)
 
   return (
     <section className="mx-auto mt-10 h-auto max-w-screen-lg px-4 pb-6 sm:mt-20">
