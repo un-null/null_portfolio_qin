@@ -1,4 +1,8 @@
-import { findUserById, usersIdTimeline } from 'twitter-api-sdk/dist/types'
+import {
+  findUserById,
+  usersIdTimeline,
+  usersIdTweets,
+} from 'twitter-api-sdk/dist/types'
 
 export type Blog = {
   id: number
@@ -19,7 +23,7 @@ export type Portfolio = {
 
 export type TwitterData = {
   user: findUserById['responses']['200']['content']['application/json']
-  tweets: usersIdTimeline['responses']['200']['content']['application/json']
+  tweets: usersIdTweets['responses']['200']['content']['application/json']
 }
 
 export type TweetProps = {
@@ -28,18 +32,18 @@ export type TweetProps = {
   name: string | undefined
   profile_image_url: string | undefined
   username: string | undefined
-  // entities?: {
-  // urls?: {
-  //   title: string | undefined
-  //   expanded_url: string
-  //   images?: {
-  //     url: string
-  //   }[]
-  // }[]
-  // hastags?: {
-  //   tag: string
-  // }[]
-  // }
+  entities?: {
+    urls?: {
+      title: string | undefined
+      expanded_url: string
+      images?: {
+        url: string
+      }[]
+    }[]
+    hastags?: {
+      tag: string
+    }[]
+  }
 }
 
 export type GitHub = {
