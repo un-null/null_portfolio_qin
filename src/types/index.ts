@@ -1,4 +1,8 @@
-import { ReactElement } from 'react'
+import {
+  findUserById,
+  usersIdTimeline,
+  usersIdTweets,
+} from 'twitter-api-sdk/dist/types'
 
 export type Blog = {
   id: number
@@ -17,13 +21,29 @@ export type Portfolio = {
   }
 }
 
-export type Twitter = {
-  id: number
-  username: string
-  user_id: string
-  created_at: string
-  avatar: ReactElement
-  // content: string
+export type TwitterData = {
+  user: findUserById['responses']['200']['content']['application/json']
+  tweets: usersIdTweets['responses']['200']['content']['application/json']
+}
+
+export type TweetProps = {
+  text: string | undefined
+  created_at: string | undefined
+  name: string | undefined
+  profile_image_url: string | undefined
+  username: string | undefined
+  entities?: {
+    urls?: {
+      title: string | undefined
+      expanded_url: string
+      images?: {
+        url: string
+      }[]
+    }[]
+    hastags?: {
+      tag: string
+    }[]
+  }
 }
 
 export type GitHub = {

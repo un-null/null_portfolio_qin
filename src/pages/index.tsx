@@ -1,15 +1,16 @@
 import { Layout, Posts, Repositories, Top, Tweets, Works } from 'components'
-import { client } from 'libs/client'
+import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import type { GetStaticProps, NextPage } from 'next'
-import { Blog, Portfolio } from 'types'
+import { Blog, Portfolio, TwitterData } from 'types'
 
 type Props = {
   blogData: MicroCMSListResponse<Blog>
   portfolioData: MicroCMSListResponse<Portfolio>
+  twitterData: TwitterData
 }
 
-const Home: NextPage<Props> = ({ blogData, portfolioData }) => {
+const Home: NextPage<Props> = ({ blogData, portfolioData, twitterData }) => {
   return (
     <Layout label="Home" description="This page is nulls portfolio homepage">
       {/* Top Section */}
@@ -36,12 +37,12 @@ const Home: NextPage<Props> = ({ blogData, portfolioData }) => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
-  const blogData = await client.getList<Blog>({
+  const blogData = await microClient.getList<Blog>({
     endpoint: 'blog',
     queries: { limit: 5 },
   })
 
-  const portfolioData = await client.getList<Portfolio>({
+  const portfolioData = await microClient.getList<Portfolio>({
     endpoint: 'portfolio',
     queries: { limit: 6 },
   })
@@ -51,5 +52,6 @@ export const getStaticProps: GetStaticProps = async () => {
       blogData,
       portfolioData,
     },
+    revalidate: 10 * 60,
   }
 }
