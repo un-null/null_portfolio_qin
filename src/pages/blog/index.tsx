@@ -1,5 +1,5 @@
 import { Layout, Post } from 'components'
-import { client } from 'libs/client'
+import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import { GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
@@ -63,7 +63,7 @@ const Blog: NextPage<Props> = ({ contents }) => {
 export default Blog
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.getList<Blog>({
+  const data = await microClient.getList<Blog>({
     endpoint: 'blog',
     queries: { limit: 3 },
   })

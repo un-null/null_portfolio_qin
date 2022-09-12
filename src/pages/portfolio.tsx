@@ -1,5 +1,5 @@
 import { Layout, Works } from 'components'
-import { client } from 'libs/client'
+import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import { GetStaticProps, NextPage } from 'next'
 import { Portfolio } from 'types'
@@ -19,7 +19,7 @@ const Portfolio: NextPage<Props> = (props) => {
 export default Portfolio
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.getList<Portfolio>({
+  const data = await microClient.getList<Portfolio>({
     endpoint: 'portfolio',
   })
 

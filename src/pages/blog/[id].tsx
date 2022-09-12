@@ -1,5 +1,5 @@
 import { TypographyStylesProvider } from '@mantine/core'
-import { client } from 'libs/client'
+import { microClient } from 'libs/client'
 import { MicroCMSContentId, MicroCMSDate } from 'microcms-js-sdk'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Blog } from 'types'
@@ -27,7 +27,7 @@ const PostId: NextPage<Props> = (props) => {
 export default PostId
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const data = await client.getList<Blog>({ endpoint: 'blog' })
+  const data = await microClient.getList<Blog>({ endpoint: 'blog' })
   const paths = data.contents.map((content) => `/blog/${content.id}`)
   return {
     paths,
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
     return { notFound: true }
   }
 
-  const data = await client.getListDetail<Blog>({
+  const data = await microClient.getListDetail<Blog>({
     endpoint: 'blog',
     contentId: ctx.params.id,
   })

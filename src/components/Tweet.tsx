@@ -1,31 +1,35 @@
 import { Avatar } from '@mantine/core'
-import { IconBrandTwitter, IconUser } from '@tabler/icons'
+import dayjs from 'dayjs'
 import { FC } from 'react'
-import { Twitter } from 'types'
+import { TweetProps } from 'types'
 
-export const Tweet: FC<Omit<Twitter, 'id'>> = ({
+type Props = TweetProps
+
+export const Tweet: FC<Props> = ({
+  name,
   username,
-  user_id,
+  profile_image_url,
+  text,
   created_at,
-  avatar,
 }) => {
   return (
     <li className="h-64 w-full">
-      <div className="flex h-full w-full">
-        <div className="h-full w-1/6 pt-4">
-          <Avatar color="blue" radius="xl" size="md">
-            {avatar}
-          </Avatar>
+      <div className="flex h-full">
+        <div className="w-1/6 pt-4">
+          <Avatar src={profile_image_url} alt="avatar" radius="xl" size="md" />
         </div>
-        <div className="h-auto w-full pt-4">
-          <div className="flex items-center gap-2 text-base font-bold">
-            <h2>{username}</h2>
+        <div className="flex h-full w-full flex-col pt-4">
+          <div className="flex h-6 items-center gap-2 text-base font-bold">
+            <h2>{name}</h2>
             <span className="block text-xs text-gray-500">
-              @{user_id}・{created_at}
+              @{username}・{dayjs(created_at).format('M月D日')}
             </span>
           </div>
-          <div className="grid h-full place-content-center shadow-sm">
-            <IconBrandTwitter size={36} stroke={1} className="text-blue-500" />
+          <div className="mt-1 h-full  shadow-md">
+            <div
+              className="whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: text! }}
+            />
           </div>
         </div>
       </div>
