@@ -17,7 +17,7 @@ export type Portfolio = {
   }
 }
 
-export type TwiiterData = {
+export type TwitterData = {
   user: findUserById['responses']['200']['content']['application/json']
   tweets: usersIdTimeline['responses']['200']['content']['application/json']
 }

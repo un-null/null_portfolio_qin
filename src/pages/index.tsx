@@ -1,13 +1,13 @@
 import { Layout, Posts, Repositories, Top, Tweets, Works } from 'components'
-import { microClient, twitterClient } from 'libs/client'
+import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import type { GetStaticProps, NextPage } from 'next'
-import { Blog, Portfolio, TwiiterData } from 'types'
+import { Blog, Portfolio, TwitterData } from 'types'
 
 type Props = {
   blogData: MicroCMSListResponse<Blog>
   portfolioData: MicroCMSListResponse<Portfolio>
-  twitterData: TwiiterData
+  twitterData: TwitterData
 }
 
 const Home: NextPage<Props> = ({ blogData, portfolioData, twitterData }) => {
@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ blogData, portfolioData, twitterData }) => {
         <Repositories />
 
         {/* Twitter Section */}
-        <Tweets {...twitterData} />
+        <Tweets />
       </div>
     </Layout>
   )
@@ -47,32 +47,10 @@ export const getStaticProps: GetStaticProps = async () => {
     queries: { limit: 6 },
   })
 
-  const tweetUser = await twitterClient.users.findUserById(
-    '1351538984791339018',
-    {
-      'user.fields': ['profile_image_url'],
-    }
-  )
-
-  const tweets = await twitterClient.tweets.usersIdTweets(
-    '1351538984791339018',
-    {
-      expansions: ['attachments.media_keys'],
-      max_results: 5,
-      'tweet.fields': ['id', 'text', 'created_at', 'entities'],
-    }
-  )
-
-  const twitterData = {
-    user: tweetUser,
-    tweets: tweets,
-  }
-
   return {
     props: {
       blogData,
       portfolioData,
-      twitterData,
     },
     revalidate: 10 * 60,
   }

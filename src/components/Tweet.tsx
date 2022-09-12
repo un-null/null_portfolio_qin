@@ -21,9 +21,9 @@ export const Tweet: FC<Props> = ({
         <div className="flex h-full w-full flex-col pt-4">
           <div className="flex h-6 items-center gap-2 text-base font-bold">
             <h2>{name}</h2>
-            <span className="block text-xs text-gray-500">
+            <p className="block text-xs text-gray-500">
               @{username}・{dayjs(created_at).format('M月D日')}
-            </span>
+            </p>
           </div>
           <div className="mt-1 h-full  shadow-md">
             <div
