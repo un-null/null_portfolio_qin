@@ -1,5 +1,6 @@
 import { Avatar } from '@mantine/core'
 import dayjs from 'dayjs'
+import Image from 'next/image'
 import { FC } from 'react'
 import { TweetProps } from 'types'
 
@@ -11,6 +12,7 @@ export const Tweet: FC<Props> = ({
   profile_image_url,
   text,
   created_at,
+  urls,
 }) => {
   return (
     <li className="h-64 w-full">
@@ -25,11 +27,24 @@ export const Tweet: FC<Props> = ({
               @{username}・{dayjs(created_at).format('M月D日')}
             </p>
           </div>
-          <div className="mt-1 h-full  shadow-md">
+          <div className="mt-1 flex h-full flex-col">
             <div
-              className="whitespace-pre-wrap"
+              className="h-auto whitespace-pre-wrap"
               dangerouslySetInnerHTML={{ __html: text! }}
             />
+            <div className="relative h-full w-full">
+              {urls
+                ? urls.map((url, index) => (
+                    <Image
+                      key={index}
+                      src={url!}
+                      alt=""
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  ))
+                : undefined}
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,4 @@
-import {
-  findUserById,
-  usersIdTimeline,
-  usersIdTweets,
-} from 'twitter-api-sdk/dist/types'
+import { findUserById, usersIdTweets } from 'twitter-api-sdk/dist/types'
 
 export type Blog = {
   id: number
@@ -21,9 +17,13 @@ export type Portfolio = {
   }
 }
 
+//mediaの型にurlが含まれてない問題
+//sumirenさんか型拡張を調べる
+
 export type TwitterData = {
   user: findUserById['responses']['200']['content']['application/json']
   tweets: usersIdTweets['responses']['200']['content']['application/json']
+  media: usersIdTweets['responses']['200']['content']['application/json']['includes']
 }
 
 export type TweetProps = {
@@ -32,18 +32,14 @@ export type TweetProps = {
   name: string | undefined
   profile_image_url: string | undefined
   username: string | undefined
-  entities?: {
-    urls?: {
-      title: string | undefined
-      expanded_url: string
-      images?: {
-        url: string
-      }[]
-    }[]
-    hastags?: {
-      tag: string
-    }[]
-  }
+  urls?: (string | undefined)[] | undefined
+  // media?: {
+  //   height?: number | undefined
+  //   media_key?: string | undefined
+  //   type: string
+  //   width?: number | undefined
+  //   url: string
+  // }[]
 }
 
 export type GitHub = {

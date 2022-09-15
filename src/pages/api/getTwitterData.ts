@@ -1,7 +1,7 @@
 import { twitterClient } from 'libs/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const getTweet = async (req: NextApiRequest, res: NextApiResponse) => {
+const getTwitterData = async (req: NextApiRequest, res: NextApiResponse) => {
   const tweetUser = await twitterClient.users.findUserById(
     process.env.TWITTER_ID,
     {
@@ -12,9 +12,10 @@ const getTweet = async (req: NextApiRequest, res: NextApiResponse) => {
   const tweets = await twitterClient.tweets.usersIdTweets(
     process.env.TWITTER_ID,
     {
-      expansions: ['attachments.media_keys'],
       max_results: 5,
-      'tweet.fields': ['id', 'text', 'created_at', 'entities'],
+      'tweet.fields': ['id', 'text', 'created_at', 'attachments'],
+      'media.fields': ['url', 'alt_text', 'width', 'height', 'media_key'],
+      expansions: ['attachments.media_keys'],
     }
   )
 
@@ -26,4 +27,4 @@ const getTweet = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(200).json(twitterData)
 }
 
-export default getTweet
+export default getTwitterData
