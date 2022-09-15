@@ -6,23 +6,17 @@ import { Title } from './Title'
 import { Tweet } from './Tweet'
 
 export const Tweets: FC = () => {
-  const { tweets, user, media, error } = useFetchTwitter()
-
-  if (error) console.log(error.message)
+  const { tweets, user, media } = useFetchTwitter()
 
   const newTweets = tweets?.map((tweet) => {
     if (tweet.attachments) {
-      const image_urls = tweet.attachments.media_keys?.map(
-        (k) => {
-          // ->
-          const image = media?.find((u) => u.media_key === k)
-          if (image && image.type === 'photo') {
-            return image.url
-          }
-          return undefined
+      const image_urls = tweet.attachments.media_keys?.map((k) => {
+        const image = media?.find((u) => u.media_key === k)
+        if (image && image.type === 'photo') {
+          return image.url
         }
-        // <-
-      )
+        return undefined
+      })
       return {
         ...tweet,
         urls: image_urls,

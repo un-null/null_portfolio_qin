@@ -35,23 +35,22 @@ export const Tweet: FC<Props> = ({
                 href={match}
                 target="_blank"
                 rel="noreferrer"
-                className=" font-semibold text-blue-500"
+                className="font-semibold text-blue-500"
               >
                 {match}
               </a>
             ))}
             <div className="relative h-full w-full">
-              {urls
-                ? urls.map((url, index) => (
-                    <Image
-                      key={index}
-                      src={url!}
-                      alt=""
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  ))
-                : undefined}
+              {urls &&
+                urls.map((url, index) => (
+                  <Image
+                    key={index}
+                    src={url!}
+                    alt=""
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                ))}
             </div>
           </div>
         </div>

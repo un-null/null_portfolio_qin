@@ -4,6 +4,7 @@ import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import type { GetStaticProps, NextPage } from 'next'
 import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Blog, Portfolio } from 'types'
 
 type Props = {
@@ -29,9 +30,17 @@ const Home: NextPage<Props> = ({ blogData, portfolioData }) => {
         <Repositories />
 
         {/* Twitter Section */}
-        <Suspense fallback={<Loader color="pink" />}>
-          <Tweets />
-        </Suspense>
+        <ErrorBoundary
+          fallback={
+            <p className="font-bold text-red-400">
+              Failed to fetch Twitter data.
+            </p>
+          }
+        >
+          <Suspense fallback={<Loader color="pink" />}>
+            <Tweets />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </Layout>
   )

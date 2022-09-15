@@ -13,6 +13,8 @@ export const useFetchTwitter = () => {
     { suspense: true }
   )
 
+  if (error) throw new Error(error.message)
+
   const user = data?.user.data
 
   const tweets: {
