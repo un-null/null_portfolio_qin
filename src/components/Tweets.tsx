@@ -1,36 +1,45 @@
 import { Button } from '@mantine/core'
+import { useFetchTwitter } from 'libs/hooks/useFetchTwitter'
 import Link from 'next/link'
 import { FC } from 'react'
-import useSWR from 'swr'
-import { TwitterData } from 'types'
 import { Title } from './Title'
 import { Tweet } from './Tweet'
 
 export const Tweets: FC = () => {
-  const fetcher = (url: string): Promise<any> =>
-    fetch(url).then((res) => res.json())
+  const { tweets, user, media } = useFetchTwitter()
 
-  const { data, error } = useSWR<TwitterData, Error>(
-    '/api/getTwitterData',
-    fetcher
-  )
-
-  if (error) alert(error.message)
+  const newTweets = tweets?.map((tweet) => {
+    if (tweet.attachments) {
+      const image_urls = tweet.attachments.media_keys?.map((k) => {
+        const image = media?.find((u) => u.media_key === k)
+        if (image && image.type === 'photo') {
+          return image.url
+        }
+        return undefined
+      })
+      return {
+        ...tweet,
+        urls: image_urls,
+      }
+    }
+    return tweet
+  })
 
   return (
     <section className="mx-auto mt-10 h-auto w-full px-4 pb-6 sm:mt-0 sm:w-[768px] md:w-full">
       <Title title="Twitter" />
 
       <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6">
-        {data?.tweets.data?.slice(0, 3).map((tweet) => {
+        {newTweets?.slice(0, 3).map((tweet) => {
           return (
             <Tweet
               key={tweet.id}
-              name={data.user.data?.name}
-              username={data.user.data?.username}
-              profile_image_url={data.user.data?.profile_image_url}
+              name={user?.name}
+              username={user?.username}
+              profile_image_url={user?.profile_image_url}
               created_at={tweet.created_at}
               text={tweet.text}
+              urls={tweet.urls}
             />
           )
         })}

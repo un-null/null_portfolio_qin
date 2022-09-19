@@ -1,16 +1,18 @@
+import { Loader } from '@mantine/core'
 import { Layout, Posts, Repositories, Top, Tweets, Works } from 'components'
 import { microClient } from 'libs/client'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import type { GetStaticProps, NextPage } from 'next'
-import { Blog, Portfolio, TwitterData } from 'types'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Blog, Portfolio } from 'types'
 
 type Props = {
   blogData: MicroCMSListResponse<Blog>
   portfolioData: MicroCMSListResponse<Portfolio>
-  twitterData: TwitterData
 }
 
-const Home: NextPage<Props> = ({ blogData, portfolioData, twitterData }) => {
+const Home: NextPage<Props> = ({ blogData, portfolioData }) => {
   return (
     <Layout label="Home" description="This page is nulls portfolio homepage">
       {/* Top Section */}
@@ -28,7 +30,17 @@ const Home: NextPage<Props> = ({ blogData, portfolioData, twitterData }) => {
         <Repositories />
 
         {/* Twitter Section */}
-        <Tweets />
+        <ErrorBoundary
+          fallback={
+            <p className="font-bold text-red-400">
+              Failed to fetch Twitter data.
+            </p>
+          }
+        >
+          <Suspense fallback={<Loader color="pink" />}>
+            <Tweets />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </Layout>
   )

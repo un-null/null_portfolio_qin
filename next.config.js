@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   images: {
-    domains: ['images.microcms-assets.io'],
+    domains: ['images.microcms-assets.io', 'pbs.twimg.com'],
   },
 }
 
