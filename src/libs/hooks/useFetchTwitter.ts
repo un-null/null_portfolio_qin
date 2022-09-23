@@ -1,12 +1,8 @@
-import axios from 'axios'
 import useSWR from 'swr'
 import { TwitterData } from 'types'
+import { fetcher } from 'utils/fetcher'
 
 export const useFetchTwitter = () => {
-  const fetcher = (url: string): Promise<any> => {
-    return axios.get(url).then((res) => res.data)
-  }
-
   const { data, error } = useSWR<TwitterData, Error>(
     process.env.NEXT_PUBLIC_HOSTNAME + '/api/getTwitterData',
     fetcher,
