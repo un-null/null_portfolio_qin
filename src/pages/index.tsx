@@ -27,7 +27,17 @@ const Home: NextPage<Props> = ({ blogData, portfolioData }) => {
       {/* Twitter & GitHub Section */}
       <div className="mx-auto mt-10 grid w-full max-w-screen-lg grid-cols-1 sm:mt-20 md:grid-cols-2">
         {/* GitHub Section */}
-        <Repositories />
+        <ErrorBoundary
+          fallback={
+            <p className="font-bold text-red-400">
+              Failed to fetch Github data.
+            </p>
+          }
+        >
+          <Suspense fallback={<Loader color="pink" />}>
+            <Repositories />
+          </Suspense>
+        </ErrorBoundary>
 
         {/* Twitter Section */}
         <ErrorBoundary

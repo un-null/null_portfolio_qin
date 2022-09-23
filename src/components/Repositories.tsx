@@ -1,62 +1,50 @@
 import { Button } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
+import { useFetchGithub } from 'libs/hooks/useFetchGithub'
 import Link from 'next/link'
 import { FC } from 'react'
-import { GitHub } from 'types'
 import { Repository } from './Repository'
 import { Title } from './Title'
 
-const repositries: GitHub[] = [
-  {
-    id: 1,
-    name: 'null/qin-portfolio',
-    description: 'Qin Portfolio',
-    star: 117,
-    fork: 4,
-  },
-  {
-    id: 2,
-    name: 'null/qin-portfolio',
-    description: 'Qin Portfolio',
-    star: 117,
-    fork: 4,
-  },
-  {
-    id: 3,
-    name: 'null/qin-portfolio',
-    description: 'Qin Portfolio',
-    star: 117,
-    fork: 4,
-  },
-  {
-    id: 4,
-    name: 'null/qin-portfolio',
-    description: 'Qin Portfolio',
-    star: 117,
-    fork: 4,
-  },
-  {
-    id: 5,
-    name: 'null/qin-portfolio',
-    description: 'Qin Portfolio',
-    star: 117,
-    fork: 4,
-  },
-]
-
 export const Repositories: FC = () => {
+  const media = useMediaQuery('(min-width: 768px)', false)
+
+  const { repos, error } = useFetchGithub()
+
+  const numberToShowRepo = media ? 5 : 3
+  const filteredReposData = repos?.slice(0, numberToShowRepo)
+
+  const languageData = filteredReposData?.map((repo) => {
+    const totalSize = repo.node.languages.totalSize
+    return repo.node.languages.edges.flatMap((lang) => {
+      const size = Number(((lang.size / totalSize) * 100).toFixed(1))
+
+      return {
+        name: lang.node.name,
+        color: lang.node.color,
+        value: size,
+      }
+    })
+  })
+
+  if (error) throw new Error(error.message)
+  if (!languageData) throw new Error('LanguageData does not exist')
+
   return (
     <section className="mx-auto h-auto w-full px-4 pb-6 sm:w-[768px] md:w-full">
       <Title title="GitHub" />
 
       <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6">
-        {repositries.map((repositry) => {
+        {filteredReposData?.map((repo, index) => {
           return (
             <Repository
-              key={repositry.id}
-              name={repositry.name}
-              description={repositry.description}
-              star={repositry.star}
-              fork={repositry.fork}
+              key={repo.node.id}
+              name={repo.node.name}
+              description={repo.node.description}
+              star={repo.node.stargazerCount}
+              fork={repo.node.forkCount}
+              languages={languageData}
+              index={index}
             />
           )
         })}
