@@ -34,7 +34,7 @@ export const Repositories: FC = () => {
     <section className="mx-auto h-auto w-full px-4 pb-6 sm:w-[768px] md:w-full">
       <Title title="GitHub" />
 
-      <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6">
+      <ul className="my-6 flex w-full flex-col items-center justify-center space-y-6 pb-6">
         {filteredReposData?.map((repo, index) => {
           return (
             <Repository
