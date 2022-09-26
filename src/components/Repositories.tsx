@@ -2,7 +2,7 @@ import { Button } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { useFetchGithub } from 'libs/hooks/useFetchGithub'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { Repository } from './Repository'
 import { Title } from './Title'
 
@@ -12,22 +12,30 @@ export const Repositories: FC = () => {
   const { repos, error } = useFetchGithub()
 
   const numberToShowRepo = media ? 5 : 3
-  const filteredReposData = repos?.slice(0, numberToShowRepo)
 
-  const languageData = filteredReposData?.map((repo) => {
-    const totalSize = repo.node.languages.totalSize
-    return repo.node.languages.edges.flatMap((lang) => {
-      const size = Number(((lang.size / totalSize) * 100).toFixed(1))
+  const filteredReposData = useMemo(() => {
+    return repos?.slice(0, numberToShowRepo)
+  }, [repos, numberToShowRepo])
 
-      return {
-        name: lang.node.name,
-        color: lang.node.color,
-        value: size,
-      }
-    })
-  })
+  const languageData = useMemo(() => {
+    if (repos) {
+      return filteredReposData?.map((repo) => {
+        const totalSize = repo.node.languages.totalSize
+        return repo.node.languages.edges.flatMap((lang) => {
+          const size = Number(((lang.size / totalSize) * 100).toFixed(1))
+
+          return {
+            name: lang.node.name,
+            color: lang.node.color,
+            value: size,
+          }
+        })
+      })
+    }
+  }, [filteredReposData, repos])
 
   if (error) throw new Error(error.message)
+
   if (!languageData) throw new Error('LanguageData does not exist')
 
   return (
