@@ -45,16 +45,15 @@ export const Tweets: FC = () => {
         })}
       </ul>
 
-      <Link href="/" passHref>
-        <a>
-          <Button
-            radius="xl"
-            className="block h-11 w-40 bg-[#25262B] hover:bg-[#0c0c13]"
-            mx="auto"
-          >
-            View on Twitter
-          </Button>
-        </a>
+      <Link href="https://twitter.com/nu_____ll" passHref>
+        <Button
+          component="a"
+          radius="xl"
+          className="block h-11 w-40 bg-[#25262B] hover:bg-[#0c0c13]"
+          mx="auto"
+        >
+          View on Twitter
+        </Button>
       </Link>
     </section>
   )

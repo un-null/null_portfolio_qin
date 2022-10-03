@@ -42,10 +42,45 @@ export type TweetProps = {
   // }[]
 }
 
-export type GitHub = {
-  id: number
+export type Repositories = {
+  user: {
+    repositories: {
+      edges: {
+        node: {
+          id: string
+          name: string
+          description: string | null
+          forkCount: number
+          stargazerCount: number
+
+          languages: {
+            edges: {
+              size: number
+              node: {
+                id: string
+                name: string
+                color: string
+              }
+            }[]
+            totalSize: number
+          }
+        }
+      }[]
+    }
+  }
+}
+
+export type Repo = {
   name: string
-  description: string
+  description: string | null
   star: number
   fork: number
+  languages:
+    | {
+        name: string
+        color: string
+        value: number
+      }[][]
+    | undefined
+  index: number
 }
