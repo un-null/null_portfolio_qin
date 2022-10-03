@@ -7,10 +7,9 @@ import { Repository } from './Repository'
 import { Title } from './Title'
 
 export const Repositories: FC = () => {
-  const media = useMediaQuery('(min-width: 768px)', false)
-
   const { repos, error } = useFetchGithub()
 
+  const media = useMediaQuery('(min-width: 768px)', false)
   const numberToShowRepo = media ? 5 : 3
 
   const filteredReposData = useMemo(() => {
@@ -36,7 +35,7 @@ export const Repositories: FC = () => {
 
   if (error) throw new Error(error.message)
 
-  if (!languageData) throw new Error('LanguageData does not exist')
+  if (!repos) throw new Error('Repositories does not exist')
 
   return (
     <section className="mx-auto h-auto w-full px-4 pb-6 sm:w-[768px] md:w-full">

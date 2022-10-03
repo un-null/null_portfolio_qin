@@ -20,7 +20,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             description
             forkCount
             stargazerCount
-            url
             
             languages(last: 3, orderBy: {field: SIZE, direction: DESC}) {
               totalSize

@@ -52,7 +52,6 @@ export type Repositories = {
           description: string | null
           forkCount: number
           stargazerCount: number
-          url: string
 
           languages: {
             edges: {
