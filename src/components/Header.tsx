@@ -39,13 +39,12 @@ export const Header: FC = () => {
               drawer: 'bg-[#E64980] text-white pl-8 pt-16 font-bold',
             }}
           >
-            <div onClick={() => setOpened(false)}>
-              <IconX
-                size={24}
-                stroke={4}
-                className="mb-8 cursor-pointer text-white hover:bg-transparent"
-              />
-            </div>
+            <IconX
+              size={24}
+              stroke={4}
+              className="mb-8 cursor-pointer text-white hover:bg-transparent"
+              onClick={() => setOpened(false)}
+            />
 
             <ul className="flex h-full w-full flex-col space-y-4 text-3xl font-semibold">
               <li>

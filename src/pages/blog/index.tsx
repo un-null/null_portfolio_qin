@@ -16,7 +16,7 @@ const Blog: NextPage<Props> = ({ contents }) => {
 
   const getMorePost = async (pageStart: number) => {
     const data = await fetch('/api/getPost', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
